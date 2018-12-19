@@ -567,7 +567,7 @@ function Set-TargetResource
             ) -join '' )
 
         # Format the volume
-        $volume = $partition | Format-Volume @VolParams
+        $volume = $partition | Format-Volume @VolParams | ForEach-Object { Start-Sleep -Seconds 3}
     }
     else
     {
@@ -603,7 +603,7 @@ function Set-TargetResource
                         $formatParam.Add('AllocationUnitSize', $AllocationUnitSize)
                     }
 
-                    $Volume | Format-Volume @formatParam
+                    $Volume | Format-Volume @formatParam | ForEach-Object { Start-Sleep -Seconds 3}
                 }
             } # if
         } # if
